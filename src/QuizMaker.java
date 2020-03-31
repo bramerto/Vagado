@@ -1,10 +1,14 @@
 import java.util.Collection;
+import java.util.Iterator;
 
 public class QuizMaker {
 
 	PuntentellingStrategy puntentellingStrategy;
+
 	Vragenlijst currentVragenlijst;
+	Iterator<Vraag> iterator;
 	Vraag currentVraag;
+	int amountGood;
 
 	public QuizMaker(PuntentellingStrategy strategy)
 	{
@@ -12,16 +16,35 @@ public class QuizMaker {
 	}
 
 	public Vraag play(Vragenlijst selected) {
+		amountGood = 0;
 		currentVragenlijst = selected;
 		Collection<Vraag> vragen = currentVragenlijst.getVragen();
-		return null;
+		iterator = vragen.iterator();
+		currentVraag = iterator.next();
+
+		return currentVraag;
 	}
 
 	public Vraag answer(String antwoord) {
+
+		if (currentVraag.check(antwoord)) {
+			amountGood++;
+		}
+
+		if (iterator.hasNext()) {
+			currentVraag = iterator.next();
+			return currentVraag;
+		}
 		return null;
 	}
 
 	public ResultObject getTotalResult() {
-		return null;
+		ResultObject results = puntentellingStrategy.execute(amountGood);
+		if (amountGood > currentVragenlijst.getLifetime_best()) {
+			currentVragenlijst.setLifetime_best(amountGood);
+		}
+
+		amountGood = 0;
+		return results;
 	}
 }

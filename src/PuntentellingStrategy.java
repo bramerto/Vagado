@@ -1,4 +1,3 @@
 public interface PuntentellingStrategy {
-
-	public int execute(int punten);
+	ResultObject execute(int amountGood);
 }
