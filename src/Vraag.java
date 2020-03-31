@@ -1,11 +1,8 @@
 public abstract class Vraag {
 
 	private int id;
-
 	private String vraag;
-
 	private String antwoord;
-
 	public Thema getThema() {
 		return null;
 	}

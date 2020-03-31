@@ -1,11 +1,8 @@
 public class ResultObject {
 
 	public int munten;
-
 	public int punten;
-
 	public int amountRight;
-
 	public int amountWrong;
 
 	public void PrintOut()

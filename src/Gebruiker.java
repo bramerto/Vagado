@@ -4,15 +4,10 @@ import java.util.Collection;
 public class Gebruiker {
 
 	private int id;
-
 	private String gebruikersnaam;
-
 	private String wachtwoord;
-
 	private int munten;
-
 	private int punten;
-
 	private boolean isMedewerker;
 
 	public Collection<Vragenlijst> getOwnedVragenlijsten() {
