@@ -40,10 +40,6 @@ public class QuizMaker {
 
 	public ResultObject getTotalResult() {
 		ResultObject results = puntentellingStrategy.execute(amountGood);
-		if (amountGood > currentVragenlijst.getLifetime_best()) {
-			currentVragenlijst.setLifetime_best(amountGood);
-		}
-
 		amountGood = 0;
 		return results;
 	}

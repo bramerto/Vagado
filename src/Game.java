@@ -7,12 +7,14 @@ public class Game {
 	private Gebruiker gebruiker;
 	private QuizMaker quizMaker;
 	private Shop shop;
+	private Collection<Vragenlijst> gebruikerVragenlijsten;
 
 	public Game() {
 		run = true;
 		gebruiker = new Gebruiker();
 		quizMaker = new QuizMaker(new StandardStrategy());
 		shop = new Shop();
+		gebruikerVragenlijsten = null;
 	}
 
 	public static void main(String[] args) {
@@ -41,10 +43,10 @@ public class Game {
 				case "askVragenlijstOverview":
 					Collection<Vragenlijst> collection = game.askVragenlijstOverview();
 					if (collection != null) {
-						System.out.println("id | naam");
+						System.out.println("id | naam | lifetime best");
 						System.out.println("---------");
 						collection.forEach(vragenlijst -> {
-							System.out.println(vragenlijst.getId() + "  | " + vragenlijst.getNaam());
+							System.out.println(vragenlijst.getId() + "  | " + vragenlijst.getNaam() + " | " + vragenlijst.getLifetime_best());
 						});
 						break;
 					}
@@ -96,7 +98,8 @@ public class Game {
 					break;
 
 				case "buyVragenlijst":
-					game.buyVragenlijst(Integer.parseInt(parameter));
+					Receipt receipt = game.buyVragenlijst(Integer.parseInt(parameter));
+					receipt.Printout();
 					break;
 
 				case "exit":
@@ -112,7 +115,10 @@ public class Game {
 	}
 
 	public Collection<Vragenlijst> askVragenlijstOverview() {
-		return gebruiker.getOwnedVragenlijsten();
+		if (gebruikerVragenlijsten == null) {
+			gebruikerVragenlijsten = gebruiker.getOwnedVragenlijsten();
+		}
+		return gebruikerVragenlijsten;
 	}
 
 	public Vraag selectVragenlijst(int selected) {
@@ -137,7 +143,15 @@ public class Game {
 	}
 
 	public ResultObject getResults() {
-		return quizMaker.getTotalResult();
+		ResultObject results = quizMaker.getTotalResult();
+		if (results.amountRight > quizMaker.currentVragenlijst.getLifetime_best()) {
+			for (Vragenlijst lijst : askVragenlijstOverview()) {
+				if (lijst.getId() == quizMaker.currentVragenlijst.getId()) {
+					lijst.setLifetime_best(results.amountRight);
+				}
+			}
+		}
+		return results;
 	}
 
 	public Collection<Vragenlijst> askShopVragenlijstOverview()
