@@ -7,14 +7,12 @@ public class Game {
 	private Gebruiker gebruiker;
 	private QuizMaker quizMaker;
 	private Shop shop;
-	private Collection<Vragenlijst> gebruikerVragenlijsten;
 
 	public Game() {
 		run = true;
 		gebruiker = new Gebruiker();
 		quizMaker = new QuizMaker(new StandardStrategy());
 		shop = new Shop();
-		gebruikerVragenlijsten = null;
 	}
 
 	public static void main(String[] args) {
@@ -29,6 +27,7 @@ public class Game {
 		System.out.println("- getResults");
 		System.out.println("- askShopVragenlijstOverview");
 		System.out.println("- buyVragenlijst {vragenlijst_id}");
+		System.out.println("- user");
 
 		while (game.run) {
 			String input = in.nextLine();
@@ -90,16 +89,25 @@ public class Game {
 					Collection<Vragenlijst> shopCollection = game.askShopVragenlijstOverview();
 
 					System.out.println("S H O P");
-					System.out.println("id | naam");
+					System.out.println("id | naam | aankoopprijs");
 					System.out.println("---------");
 					shopCollection.forEach(vragenlijst -> {
-						System.out.println(vragenlijst.getId() + "  | " + vragenlijst.getNaam());
+						System.out.println(vragenlijst.getId() + "  | " + vragenlijst.getNaam() + " | " + vragenlijst.getAankoopprijs());
 					});
 					break;
 
 				case "buyVragenlijst":
 					Receipt receipt = game.buyVragenlijst(Integer.parseInt(parameter));
+					if (receipt == null) {
+						System.out.println("Can't find vragenlijst on given parameter or gebruiker does not have enough munten.");
+						break;
+					}
 					receipt.Printout();
+					break;
+				case "user":
+					System.out.println("gebruiker - " + game.gebruiker.getGebruikersnaam() + " (" + game.gebruiker.getId() + ")");
+					System.out.println("huidige munten: " + game.gebruiker.getMunten());
+					System.out.println("huidige punten: " + game.gebruiker.getPunten());
 					break;
 
 				case "exit":
@@ -115,10 +123,7 @@ public class Game {
 	}
 
 	public Collection<Vragenlijst> askVragenlijstOverview() {
-		if (gebruikerVragenlijsten == null) {
-			gebruikerVragenlijsten = gebruiker.getOwnedVragenlijsten();
-		}
-		return gebruikerVragenlijsten;
+		return gebruiker.getOwnedVragenlijsten();
 	}
 
 	public Vraag selectVragenlijst(int selected) {
@@ -144,8 +149,10 @@ public class Game {
 
 	public ResultObject getResults() {
 		ResultObject results = quizMaker.getTotalResult();
+		gebruiker.addMunten(results.munten);
+		gebruiker.addPunten(results.punten);
 		if (results.amountRight > quizMaker.currentVragenlijst.getLifetime_best()) {
-			for (Vragenlijst lijst : askVragenlijstOverview()) {
+			for (Vragenlijst lijst : gebruiker.getOwnedVragenlijsten()) {
 				if (lijst.getId() == quizMaker.currentVragenlijst.getId()) {
 					lijst.setLifetime_best(results.amountRight);
 				}
@@ -156,10 +163,10 @@ public class Game {
 
 	public Collection<Vragenlijst> askShopVragenlijstOverview()
 	{
-		return null;
+		return shop.getVragenlijsten();
 	}
 
 	public Receipt buyVragenlijst(int selected) {
-		return shop.buyVragenlijst(selected, gebruiker.getId());
+		return shop.buyVragenlijst(selected, gebruiker);
 	}
 }

@@ -13,6 +13,7 @@ public class Vragenlijst {
 		this.id = id;
 		this.naam = naam;
 		this.lifetime_best = 0;
+		this.aankoopprijs = 2;
 	}
 
 	public Thema getThema() {
@@ -53,5 +54,9 @@ public class Vragenlijst {
 
 	public int getLifetime_best() {
 		return lifetime_best;
+	}
+
+	public int getAankoopprijs() {
+		return aankoopprijs;
 	}
 }

@@ -1,8 +1,8 @@
 public class Receipt {
 
-	private int price;
-	private Vragenlijst lijst;
-	private boolean isAdded;
+	public int price;
+	public Vragenlijst lijst;
+	public Gebruiker gebruiker;
 
 	public void Printout()
 	{
@@ -11,8 +11,7 @@ public class Receipt {
 		System.out.println("------------");
 		System.out.println("Vragenlijst");
 		System.out.println("id: " + lijst.getId());
-		System.out.println("id: " + lijst.getNaam());
-		System.out.println("------------");
-		System.out.println("Is added to account: " + isAdded);
+		System.out.println("naam: " + lijst.getNaam());
+		System.out.println("price: " + lijst.getAankoopprijs());
 	}
 }
