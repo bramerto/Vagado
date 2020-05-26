@@ -25,9 +25,9 @@ public class Shop {
 				receipt.lijst = vragenlijst;
 				receipt.price = price;
 
-				ArrayList<Vragenlijst> vragenlijstCollection = new ArrayList<>(gebruiker.getOwnedVragenlijsten());
-				vragenlijstCollection.add(vragenlijst);
-				gebruiker.setVragenlijsten(vragenlijstCollection);
+				ArrayList<Vragenlijst> vragenlijsten = new ArrayList<>(gebruiker.getOwnedVragenlijsten());
+				vragenlijsten.add(vragenlijst);
+				gebruiker.setVragenlijsten(vragenlijsten);
 				receipt.gebruiker = gebruiker;
 			}
 		}

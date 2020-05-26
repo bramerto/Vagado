@@ -20,9 +20,9 @@ public class Game {
 
 	public Vraag selectVragenlijst(int selected) {
 		Vragenlijst chosenVragenlijst = null;
-		Collection<Vragenlijst> vragenlijsten = gebruiker.getOwnedVragenlijsten();
+		Collection<Vragenlijst> lijsten = gebruiker.getOwnedVragenlijsten();
 
-		for (Vragenlijst vragenlijst : vragenlijsten) {
+		for (Vragenlijst vragenlijst : lijsten) {
 			if (vragenlijst.getId() == selected) {
 				chosenVragenlijst = vragenlijst;
 			}
@@ -40,17 +40,17 @@ public class Game {
 	}
 
 	public ResultObject getResults() {
-		ResultObject results = quizMaker.getTotalResult();
-		gebruiker.addMunten(results.munten);
-		gebruiker.addPunten(results.punten);
-		if (results.amountRight > quizMaker.currentVragenlijst.getLifetime_best()) {
+		ResultObject resultaten = quizMaker.getTotalResult();
+		gebruiker.addMunten(resultaten.munten);
+		gebruiker.addPunten(resultaten.punten);
+		if (resultaten.amountRight > quizMaker.currentVragenlijst.getLifetime_best()) {
 			for (Vragenlijst lijst : gebruiker.getOwnedVragenlijsten()) {
 				if (lijst.getId() == quizMaker.currentVragenlijst.getId()) {
-					lijst.setLifetime_best(results.amountRight);
+					lijst.setLifetime_best(resultaten.amountRight);
 				}
 			}
 		}
-		return results;
+		return resultaten;
 	}
 
 	public Collection<Vragenlijst> askShopVragenlijstOverview()

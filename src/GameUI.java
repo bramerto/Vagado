@@ -25,13 +25,15 @@ public class GameUI {
                 parameter = inputArray[1];
             }
 
+            Collection<Vragenlijst> vragenlijsten;
+
             switch (inputArray[0]) {
                 case "askVragenlijstOverview":
-                    Collection<Vragenlijst> collection = game.askVragenlijstOverview();
-                    if (collection != null) {
+                    vragenlijsten = game.askVragenlijstOverview();
+                    if (vragenlijsten != null) {
                         System.out.println("id | naam | lifetime best");
                         System.out.println("---------");
-                        collection.forEach(vragenlijst -> {
+                        vragenlijsten.forEach(vragenlijst -> {
                             System.out.println(vragenlijst.getId() + "  | " + vragenlijst.getNaam() + " | " + vragenlijst.getLifetime_best());
                         });
                         break;
@@ -73,23 +75,23 @@ public class GameUI {
                     break;
 
                 case "askShopVragenlijstOverview":
-                    Collection<Vragenlijst> shopCollection = game.askShopVragenlijstOverview();
+                    vragenlijsten = game.askShopVragenlijstOverview();
 
                     System.out.println("S H O P");
                     System.out.println("id | naam | aankoopprijs");
                     System.out.println("---------");
-                    shopCollection.forEach(vragenlijst -> {
+                    vragenlijsten.forEach(vragenlijst -> {
                         System.out.println(vragenlijst.getId() + "  | " + vragenlijst.getNaam() + " | " + vragenlijst.getAankoopprijs());
                     });
                     break;
 
                 case "buyVragenlijst":
-                    Receipt receipt = game.buyVragenlijst(Integer.parseInt(parameter));
-                    if (receipt == null) {
+                    Receipt bonnetje = game.buyVragenlijst(Integer.parseInt(parameter));
+                    if (bonnetje == null) {
                         System.out.println("Can't find vragenlijst on given parameter or gebruiker does not have enough munten.");
                         break;
                     }
-                    receipt.Printout();
+                    bonnetje.Printout();
                     break;
                 case "user":
                     System.out.println("gebruiker - " + game.gebruiker.getGebruikersnaam() + " (" + game.gebruiker.getId() + ")");

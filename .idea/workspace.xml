@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3486dfe-ffa0-4f90-a446-b58177a5963b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
       <recent name="C:\Users\bramv\Documents\GitHub\vagado\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GameUI">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game" />
       <module name="vagado" />
@@ -48,8 +49,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GameUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameUI" />
+      <module name="vagado" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GameUI" />
         <item itemvalue="Application.Game" />
       </list>
     </recent_temporary>
@@ -67,7 +76,7 @@
       <workItem from="1585641399637" duration="24668000" />
       <workItem from="1585731098741" duration="9023000" />
       <workItem from="1590430387313" duration="2806000" />
-      <workItem from="1590490875697" duration="245000" />
+      <workItem from="1590490875697" duration="2286000" />
     </task>
     <servers />
   </component>
@@ -83,21 +92,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585659506181" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1585740453768">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1590491310337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585740453768" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1585740453768">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590491310337" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1590491310337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585740453768" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1585740453768">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590491310337" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1590491310336">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585740453768" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1585740453768">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590491310336" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1590491310337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585740453768" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590491310337" />
   </component>
 </project>
