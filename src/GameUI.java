@@ -91,7 +91,7 @@ public class GameUI {
                         System.out.println("Can't find vragenlijst on given parameter or gebruiker does not have enough munten.");
                         break;
                     }
-                    bonnetje.Printout();
+                    bonnetje.PrintOut();
                     break;
                 case "user":
                     System.out.println("gebruiker - " + game.gebruiker.getGebruikersnaam() + " (" + game.gebruiker.getId() + ")");
