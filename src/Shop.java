@@ -28,7 +28,6 @@ public class Shop {
 				ArrayList<Vragenlijst> vragenlijsten = new ArrayList<>(gebruiker.getOwnedVragenlijsten());
 				vragenlijsten.add(vragenlijst);
 				gebruiker.setVragenlijsten(vragenlijsten);
-				receipt.gebruiker = gebruiker;
 			}
 		}
 
